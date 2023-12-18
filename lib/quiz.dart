@@ -10,19 +10,11 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-  // Concept - Render Content Conditionally
-  //  if we use 'var' instead of Widget type than it's only accepts the StartScreen type object.
-  Widget? activeScreen;  // More general type to change screens
-
-  @override
-  void initState() {
-    activeScreen = StartScreen(switchScreen);
-    super.initState();
-  }
+  var activeScreen = 'start-screen';
 
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionsScreen();
+      activeScreen = 'questions-screen';
     });
   }
 
@@ -42,8 +34,10 @@ class _QuizState extends State<Quiz> {
             end: Alignment.bottomRight,
           )),
 
-          // Changes Quiz Pages
-          child: activeScreen,
+          // Starting Quiz using ternary operator to achieve rendering content Conditionally.
+          child: activeScreen == 'start-screen' 
+          ? StartScreen(switchScreen) 
+          : const QuestionsScreen(),
         ),
       ),
     );
