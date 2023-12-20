@@ -27,7 +27,6 @@ class _QuizState extends State<Quiz> {
     // Compare tottal no.of question with total no. of answers
     if (selectedAnswers.length == questions.length) {
       setState(() {
-        selectedAnswers = [];
         activeScreen = 'result-screen';
       });
     }
